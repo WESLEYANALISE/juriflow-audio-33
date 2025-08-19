@@ -133,9 +133,9 @@ export const AreasGrid = ({
           loop: true
         }}>
               <CarouselContent className="-ml-2 md:-ml-4">
-                {recentBooks.map((book, index) => <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/4 md:basis-1/6">
+                {recentBooks.map((book, index) => <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/3 md:basis-1/5">
                     <div className="flex flex-col items-center">
-                      <img src={book.imagem} alt={book.livro} className="w-20 h-26 object-cover rounded shadow-md hover:scale-105 transition-transform duration-200" />
+                      <img src={book.imagem} alt={book.livro} className="w-28 h-36 object-cover rounded shadow-md hover:scale-105 transition-transform duration-200" />
                     </div>
                   </CarouselItem>)}
               </CarouselContent>
