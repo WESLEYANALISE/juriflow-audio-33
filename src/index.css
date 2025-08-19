@@ -8,48 +8,61 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark jurídico theme */
-    --background: 210 24% 6%;
+    /* Elegant dark jurídico theme */
+    --background: 215 28% 5%;
     --foreground: 210 20% 98%;
 
-    --card: 210 24% 8%;
+    --card: 215 25% 8%;
     --card-foreground: 210 20% 98%;
 
-    --popover: 210 24% 8%;
+    --popover: 215 25% 9%;
     --popover-foreground: 210 20% 98%;
 
-    --primary: 45 93% 67%;
-    --primary-foreground: 210 24% 6%;
+    --primary: 43 96% 72%;
+    --primary-foreground: 215 28% 5%;
+    --primary-glow: 43 96% 82%;
 
-    --secondary: 210 20% 12%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 215 20% 12%;
+    --secondary-foreground: 210 20% 88%;
 
-    --muted: 210 20% 10%;
-    --muted-foreground: 210 10% 60%;
+    --muted: 215 20% 10%;
+    --muted-foreground: 210 12% 65%;
 
-    --accent: 210 20% 14%;
-    --accent-foreground: 210 20% 90%;
+    --accent: 215 20% 14%;
+    --accent-foreground: 210 20% 92%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 20% 98%;
 
-    --border: 210 20% 18%;
-    --input: 210 20% 12%;
-    --ring: 45 93% 67%;
+    --border: 215 20% 16%;
+    --input: 215 20% 12%;
+    --ring: 43 96% 72%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
-    /* Custom tokens for legal news app */
-    --primary-gold: 45 93% 67%;
-    --primary-gold-foreground: 210 24% 6%;
-    --surface-elevated: 210 24% 10%;
-    --surface-glass: 210 24% 8%;
-    --gradient-primary: linear-gradient(135deg, hsl(45 93% 67%), hsl(40 85% 60%));
-    --gradient-surface: linear-gradient(180deg, hsl(210 24% 8%), hsl(210 24% 6%));
-    --shadow-card: 0 8px 32px -8px hsl(210 24% 3% / 0.4);
-    --shadow-elevated: 0 16px 48px -12px hsl(210 24% 3% / 0.6);
+    /* Elegant custom tokens */
+    --primary-gold: 43 96% 72%;
+    --primary-gold-foreground: 215 28% 5%;
+    --surface-elevated: 215 25% 11%;
+    --surface-glass: 215 25% 8% / 0.95;
+    --surface-luxury: 215 25% 13%;
+    
+    /* Enhanced gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(43 96% 72%), hsl(38 88% 68%));
+    --gradient-surface: linear-gradient(145deg, hsl(215 25% 8%), hsl(215 28% 6%));
+    --gradient-card: linear-gradient(145deg, hsl(215 25% 9%), hsl(215 22% 7%));
+    --gradient-luxury: linear-gradient(135deg, hsl(43 96% 72% / 0.1), hsl(38 88% 68% / 0.05));
+    
+    /* Refined shadows */
+    --shadow-card: 0 4px 24px -4px hsl(215 28% 3% / 0.3), 0 0 0 1px hsl(215 20% 16%);
+    --shadow-elevated: 0 12px 40px -8px hsl(215 28% 3% / 0.4), 0 0 0 1px hsl(215 20% 18%);
+    --shadow-luxury: 0 20px 60px -12px hsl(215 28% 2% / 0.6), 0 0 0 1px hsl(43 96% 72% / 0.1);
+    --shadow-glow: 0 0 40px hsl(43 96% 72% / 0.15);
+    
+    /* Smooth animations */
     --animation-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --animation-bounce: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --animation-gentle: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
     --sidebar-background: 0 0% 98%;
 

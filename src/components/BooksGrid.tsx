@@ -100,30 +100,33 @@ export const BooksGrid = ({ selectedArea, onBookClick, onBack, readBooks, onStat
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-10">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 bg-primary/20 backdrop-blur-sm border border-primary/30 text-foreground hover:bg-primary/30 px-3 py-2 rounded-md transition-colors"
+          className="flex items-center gap-3 bg-surface-luxury/80 backdrop-blur-sm border border-border/50 text-foreground hover:bg-surface-luxury hover:border-primary/30 px-5 py-3 rounded-xl transition-all duration-300 hover:shadow-elevated font-medium"
         >
           ← Voltar para áreas
         </button>
       </div>
-      <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold text-foreground mb-2">
-          {selectedArea}
-        </h2>
-        <p className="text-muted-foreground mb-6">
-          Livros clássicos para sua biblioteca pessoal
+      <div className="text-center mb-12">
+        <div className="relative inline-block mb-6">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            {selectedArea}
+          </h2>
+          <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-primary rounded-full" />
+        </div>
+        <p className="text-lg text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+          Explore nossa coleção cuidadosamente selecionada de obras fundamentais
         </p>
         
-        <div className="relative max-w-md mx-auto">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <div className="relative max-w-lg mx-auto">
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="Pesquisar livros..."
+            placeholder="Pesquisar por título ou autor..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-surface-elevated border-border"
+            className="pl-12 pr-4 py-3 bg-surface-elevated/80 border-border/50 rounded-xl shadow-card backdrop-blur-sm focus:bg-surface-elevated focus:border-primary/30 focus:shadow-elevated transition-all duration-300 text-base"
           />
         </div>
       </div>

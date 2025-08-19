@@ -107,21 +107,28 @@ export const AreasGrid = ({
   }
   return <div className="min-h-screen bg-background">
       <div className="container mx-auto max-w-4xl py-0 my-0 px-[7px]">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-4">
-            Acervo de Clássicos Jurídicos
-          </h1>
-          <p className="text-lg text-muted-foreground mb-2">
-            Acervo da Biblioteca Universitária
+        <div className="text-center mb-12">
+          <div className="relative inline-block mb-6">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent leading-tight">
+              Clássicos Jurídicos
+            </h1>
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-primary rounded-full" />
+          </div>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Acervo da Biblioteca Universitária - Descubra os grandes clássicos do direito
           </p>
-          
         </div>
 
         {/* Recent Books Carousel */}
-        {recentBooks.length > 0 && <div className="mb-8">
-            <h2 className="text-xl font-semibold text-center text-foreground mb-4">
-              Últimos Livros
-            </h2>
+        {recentBooks.length > 0 && <div className="mb-12">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-foreground mb-2">
+                Últimos Livros Adicionados
+              </h2>
+              <p className="text-muted-foreground">
+                Descubra as mais recentes adições ao nosso acervo
+              </p>
+            </div>
             <Carousel plugins={[Autoplay({
           delay: 2000,
           stopOnInteraction: false,
@@ -132,8 +139,12 @@ export const AreasGrid = ({
         }}>
               <CarouselContent className="-ml-2 md:-ml-4">
                 {recentBooks.map((book, index) => <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/3 md:basis-1/5">
-                    <div className="flex flex-col items-center">
-                      <img src={book.imagem} alt={book.livro} className="w-28 h-36 object-cover rounded shadow-md hover:scale-105 transition-transform duration-200" />
+                    <div className="group flex flex-col items-center">
+                      <div className="relative overflow-hidden rounded-xl shadow-card hover:shadow-elevated transition-all duration-300">
+                        <img src={book.imagem} alt={book.livro} className="w-28 h-36 object-cover group-hover:scale-105 transition-transform duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      </div>
+                      <p className="text-xs text-center text-muted-foreground mt-2 line-clamp-2 max-w-[112px] leading-tight">{book.livro}</p>
                     </div>
                   </CarouselItem>)}
               </CarouselContent>
@@ -145,17 +156,20 @@ export const AreasGrid = ({
           <div className="w-32 h-px bg-border opacity-50"></div>
         </div>
         
-        <div className="grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-          {areas.map(area => <Card key={area.name} className={`${area.color} p-8 cursor-pointer hover:scale-105 transition-transform duration-200 border-0 text-white`} onClick={() => onAreaClick(area.name)}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {areas.map(area => <Card key={area.name} className={`${area.color} p-8 cursor-pointer hover:scale-[1.02] hover:shadow-luxury transition-all duration-300 border-0 text-white relative overflow-hidden group`} onClick={() => onAreaClick(area.name)}>
+              {/* Subtle overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="text-center space-y-6 relative z-10">
+                <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
                   {area.icon}
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">
+                <div className="space-y-3">
+                  <h3 className="text-2xl font-bold leading-tight">
                     {area.name}
                   </h3>
-                  <div className="bg-white/20 rounded-full text-sm inline-block py-0 px-[16px]">
+                  <div className="bg-white/20 backdrop-blur-sm rounded-full text-sm inline-block py-2 px-5 shadow-md">
                     {area.count} {area.count === 1 ? 'livro disponível' : 'livros disponíveis'}
                   </div>
                 </div>

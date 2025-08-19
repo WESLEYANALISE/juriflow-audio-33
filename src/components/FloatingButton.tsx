@@ -19,15 +19,15 @@ export const FloatingButton = ({ recentBooks, favoriteBooks, onBookClick }: Floa
       {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-40"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-primary hover:shadow-luxury text-primary-foreground rounded-2xl shadow-elevated hover:scale-105 transition-all duration-300 flex items-center justify-center z-40 border border-primary/20 backdrop-blur-sm"
       >
-        {isOpen ? <X className="h-6 w-6" /> : <History className="h-6 w-6" />}
+        {isOpen ? <X className="h-7 w-7" /> : <History className="h-7 w-7" />}
       </button>
 
       {/* Floating Card */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 w-80 max-w-[calc(100vw-3rem)] z-50 animate-in slide-in-from-bottom-5 fade-in-0 duration-300">
-          <Card className="bg-surface-elevated border-border shadow-2xl">
+        <div className="fixed bottom-28 right-6 w-80 max-w-[calc(100vw-3rem)] z-50 animate-in slide-in-from-bottom-5 fade-in-0 duration-300">
+          <Card className="bg-gradient-card border-border/50 shadow-luxury backdrop-blur-xl">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg font-semibold text-foreground">
                 Biblioteca Pessoal

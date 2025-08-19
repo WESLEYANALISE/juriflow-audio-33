@@ -53,10 +53,11 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				surface: {
-					elevated: 'hsl(var(--surface-elevated))',
-					glass: 'hsl(var(--surface-glass))'
-				},
+			surface: {
+				elevated: 'hsl(var(--surface-elevated))',
+				glass: 'hsl(var(--surface-glass))',
+				luxury: 'hsl(var(--surface-luxury))'
+			},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -75,15 +76,20 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
-				'gradient-surface': 'var(--gradient-surface)'
+				'gradient-surface': 'var(--gradient-surface)',
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-luxury': 'var(--gradient-luxury)'
 			},
 			boxShadow: {
 				card: 'var(--shadow-card)',
-				elevated: 'var(--shadow-elevated)'
+				elevated: 'var(--shadow-elevated)',
+				luxury: 'var(--shadow-luxury)',
+				glow: 'var(--shadow-glow)'
 			},
 			transitionTimingFunction: {
 				smooth: 'var(--animation-smooth)',
-				bounce: 'var(--animation-bounce)'
+				bounce: 'var(--animation-bounce)',
+				gentle: 'var(--animation-gentle)'
 			},
 			keyframes: {
 				'accordion-down': {
