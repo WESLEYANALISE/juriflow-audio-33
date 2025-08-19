@@ -81,7 +81,7 @@ const Index = () => {
   };
   const favoriteBookItems = recentBooks.filter(book => favoriteBooks.has(book.id));
   return <div className="min-h-screen bg-background">
-      {!selectedArea && !selectedBook && <Header totalBooks={totalBooks} availableBooks={availableBooks} onBookSelect={handleBookSelect} />}
+      {!selectedArea && !selectedBook && <Header totalBooks={totalBooks} availableBooks={availableBooks} />}
       <main className="container mx-auto py-6 max-w-4xl px-[8px]">
         {selectedBook ? <BookDetail book={selectedBook} onBack={() => setSelectedBook(null)} onFavorite={handleFavorite} isFavorite={favoriteBooks.has(selectedBook.id)} /> : selectedArea ? <BooksGrid selectedArea={selectedArea} onBookClick={handleBookClick} onBack={() => {
         setSelectedArea(null);
@@ -89,7 +89,7 @@ const Index = () => {
       }} readBooks={readBooks} onStatsUpdate={(total, available) => {
         setTotalBooks(total);
         setAvailableBooks(available);
-      }} highlightedBookId={highlightedBookId} onFavorite={handleFavorite} favoriteBooks={favoriteBooks} /> : <AreasGrid onAreaClick={setSelectedArea} />}
+      }} highlightedBookId={highlightedBookId} onFavorite={handleFavorite} favoriteBooks={favoriteBooks} /> : <AreasGrid onAreaClick={setSelectedArea} onBookSelect={handleBookSelect} />}
       </main>
       
       <FloatingButton recentBooks={recentBooks} favoriteBooks={favoriteBookItems} onBookClick={handleBookClick} />

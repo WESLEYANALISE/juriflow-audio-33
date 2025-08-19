@@ -5,6 +5,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Loader2 } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { GlobalSearch } from "./GlobalSearch";
+import { BookItem } from "@/pages/Index";
 interface Area {
   name: string;
   count: number;
@@ -17,9 +19,11 @@ interface RecentBook {
 }
 interface AreasGridProps {
   onAreaClick: (area: string) => void;
+  onBookSelect?: (book: BookItem, area: string) => void;
 }
 export const AreasGrid = ({
-  onAreaClick
+  onAreaClick,
+  onBookSelect
 }: AreasGridProps) => {
   const [areas, setAreas] = useState<Area[]>([]);
   const [loading, setLoading] = useState(true);
@@ -119,6 +123,13 @@ export const AreasGrid = ({
           </p>
         </div>
 
+        {/* Global Search */}
+        {onBookSelect && (
+          <div className="mb-12">
+            <GlobalSearch onBookSelect={onBookSelect} />
+          </div>
+        )}
+
         {/* Recent Books Carousel */}
         {recentBooks.length > 0 && <div className="mb-12">
             <div className="text-center mb-6">
@@ -156,7 +167,7 @@ export const AreasGrid = ({
           <div className="w-32 h-px bg-border opacity-50"></div>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 gap-6 max-w-3xl mx-auto">
           {areas.map(area => <Card key={area.name} className={`${area.color} p-8 cursor-pointer hover:scale-[1.02] hover:shadow-luxury transition-all duration-300 border-0 text-white relative overflow-hidden group`} onClick={() => onAreaClick(area.name)}>
               {/* Subtle overlay for depth */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

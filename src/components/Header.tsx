@@ -8,10 +8,9 @@ interface HeaderProps {
 }
 export const Header = ({
   totalBooks = 0,
-  availableBooks = 0,
-  onBookSelect
-}: HeaderProps) => {
-  return <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-surface-glass/95 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-glass/95 shadow-card">
+  availableBooks = 0
+}: Omit<HeaderProps, 'onBookSelect'>) => {
+  return <header className="w-full border-b border-border/50 bg-surface-glass/95 backdrop-blur-xl supports-[backdrop-filter]:bg-surface-glass/95 shadow-card">
       <div className="container mx-auto px-4 py-5 max-w-4xl">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
@@ -31,7 +30,7 @@ export const Header = ({
           </div>
         </div>
         
-        {onBookSelect && <GlobalSearch onBookSelect={onBookSelect} />}
+        
       </div>
     </header>;
 };
