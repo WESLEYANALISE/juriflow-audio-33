@@ -31,7 +31,7 @@ export const BookCard = ({ book, onClick, onFavorite, isFavorite = false }: Book
       <CardContent className="p-0">
         <div className="flex gap-3 p-3 sm:gap-4 sm:p-4">
           <div className="relative flex-shrink-0">
-            <div className="w-16 h-24 sm:w-20 sm:h-28 bg-gradient-primary rounded-lg flex items-center justify-center overflow-hidden shadow-md">
+            <div className="w-24 h-32 sm:w-28 sm:h-36 bg-gradient-primary rounded-lg flex items-center justify-center overflow-hidden shadow-md">
               {book.imagem ? (
                 <img 
                   src={book.imagem} 
