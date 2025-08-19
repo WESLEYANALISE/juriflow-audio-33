@@ -61,7 +61,7 @@ export const BookCard = ({ book, onClick, onFavorite, isFavorite = false }: Book
 
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2 mb-2">
-              <h3 className="font-semibold text-foreground text-xs sm:text-sm leading-tight line-clamp-2">
+              <h3 className="font-semibold text-foreground text-sm sm:text-base leading-tight line-clamp-2">
                 {book.livro}
               </h3>
               {book.isRead && (
@@ -71,11 +71,11 @@ export const BookCard = ({ book, onClick, onFavorite, isFavorite = false }: Book
               )}
             </div>
             
-            <p className="text-xs text-primary font-medium mb-1">
+            <p className="text-sm text-primary font-medium mb-2">
               {book.autor}
             </p>
             
-            <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+            <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
               {book.sobre}
             </p>
             
