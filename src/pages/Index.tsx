@@ -4,7 +4,6 @@ import { BookDetail } from "@/components/BookDetail";
 import { Header } from "@/components/Header";
 import { AreasGrid } from "@/components/AreasGrid";
 import { FloatingButton } from "@/components/FloatingButton";
-
 export interface BookItem {
   id: number;
   livro: string;
@@ -16,7 +15,6 @@ export interface BookItem {
   beneficios?: string;
   isRead?: boolean;
 }
-
 const Index = () => {
   const [selectedBook, setSelectedBook] = useState<BookItem | null>(null);
   const [selectedArea, setSelectedArea] = useState<string | null>(null);
@@ -31,20 +29,17 @@ const Index = () => {
   useEffect(() => {
     const savedFavorites = localStorage.getItem('favoriteBooks');
     const savedRecent = localStorage.getItem('recentBooks');
-    
     if (savedFavorites) {
       setFavoriteBooks(new Set(JSON.parse(savedFavorites)));
     }
-    
     if (savedRecent) {
       setRecentBooks(JSON.parse(savedRecent));
     }
   }, []);
-
   const handleBookSelect = (book: BookItem, area: string) => {
     setSelectedArea(area);
     setHighlightedBookId(book.id);
-    
+
     // Smooth scroll to highlighted book after area loads
     setTimeout(() => {
       const bookElement = document.querySelector(`[data-book-id="${book.id}"]`);
@@ -55,13 +50,12 @@ const Index = () => {
         });
       }
     }, 500);
-    
+
     // Remove highlight after 5 seconds
     setTimeout(() => {
       setHighlightedBookId(null);
     }, 5000);
   };
-
   const handleBookClick = (book: BookItem) => {
     // Add to recent books
     setRecentBooks(prev => {
@@ -70,11 +64,9 @@ const Index = () => {
       localStorage.setItem('recentBooks', JSON.stringify(newRecent));
       return newRecent;
     });
-    
     setReadBooks(prev => new Set(prev.add(book.id)));
     setSelectedBook(book);
   };
-
   const handleFavorite = (bookId: number, isFavorite: boolean) => {
     setFavoriteBooks(prev => {
       const newFavorites = new Set(prev);
@@ -87,55 +79,20 @@ const Index = () => {
       return newFavorites;
     });
   };
-
   const favoriteBookItems = recentBooks.filter(book => favoriteBooks.has(book.id));
-
-  return (
-    <div className="min-h-screen bg-background">
-      {!selectedArea && !selectedBook && (
-        <Header 
-          totalBooks={totalBooks} 
-          availableBooks={availableBooks}
-          onBookSelect={handleBookSelect}
-        />
-      )}
-      <main className="container mx-auto px-4 py-6 max-w-4xl">
-        {selectedBook ? (
-          <BookDetail 
-            book={selectedBook} 
-            onBack={() => setSelectedBook(null)}
-            onFavorite={handleFavorite}
-            isFavorite={favoriteBooks.has(selectedBook.id)}
-          />
-        ) : selectedArea ? (
-          <BooksGrid 
-            selectedArea={selectedArea}
-            onBookClick={handleBookClick}
-            onBack={() => {
-              setSelectedArea(null);
-              setHighlightedBookId(null);
-            }}
-            readBooks={readBooks}
-            onStatsUpdate={(total, available) => {
-              setTotalBooks(total);
-              setAvailableBooks(available);
-            }}
-            highlightedBookId={highlightedBookId}
-            onFavorite={handleFavorite}
-            favoriteBooks={favoriteBooks}
-          />
-        ) : (
-          <AreasGrid onAreaClick={setSelectedArea} />
-        )}
+  return <div className="min-h-screen bg-background">
+      {!selectedArea && !selectedBook && <Header totalBooks={totalBooks} availableBooks={availableBooks} onBookSelect={handleBookSelect} />}
+      <main className="container mx-auto py-6 max-w-4xl px-[8px]">
+        {selectedBook ? <BookDetail book={selectedBook} onBack={() => setSelectedBook(null)} onFavorite={handleFavorite} isFavorite={favoriteBooks.has(selectedBook.id)} /> : selectedArea ? <BooksGrid selectedArea={selectedArea} onBookClick={handleBookClick} onBack={() => {
+        setSelectedArea(null);
+        setHighlightedBookId(null);
+      }} readBooks={readBooks} onStatsUpdate={(total, available) => {
+        setTotalBooks(total);
+        setAvailableBooks(available);
+      }} highlightedBookId={highlightedBookId} onFavorite={handleFavorite} favoriteBooks={favoriteBooks} /> : <AreasGrid onAreaClick={setSelectedArea} />}
       </main>
       
-      <FloatingButton
-        recentBooks={recentBooks}
-        favoriteBooks={favoriteBookItems}
-        onBookClick={handleBookClick}
-      />
-    </div>
-  );
+      <FloatingButton recentBooks={recentBooks} favoriteBooks={favoriteBookItems} onBookClick={handleBookClick} />
+    </div>;
 };
-
 export default Index;

@@ -72,7 +72,7 @@ export const BookDetail = ({
 
       {/* Book Cover and Action Buttons */}
       <Card className="overflow-hidden">
-        <CardContent className="p-6">
+        <CardContent className="p-6 px-[20px]">
           <div className="flex flex-col gap-6">
             {/* Book Cover - Centralized */}
             <div className="flex justify-center">
@@ -81,18 +81,9 @@ export const BookDetail = ({
                   {book.imagem ? <img src={book.imagem} alt={book.livro} className="w-full h-full object-cover" /> : <BookOpen className="h-16 w-16 text-primary-foreground" />}
                 </div>
                 {/* Favorite Heart */}
-                {onFavorite && (
-                  <button
-                    onClick={() => onFavorite(book.id, !isFavorite)}
-                    className="absolute -top-2 -right-2 w-10 h-10 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center border border-border hover:bg-background transition-all duration-200 shadow-lg"
-                  >
-                    <Heart 
-                      className={`h-5 w-5 transition-colors ${
-                        isFavorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground hover:text-red-500'
-                      }`} 
-                    />
-                  </button>
-                )}
+                {onFavorite && <button onClick={() => onFavorite(book.id, !isFavorite)} className="absolute -top-2 -right-2 w-10 h-10 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center border border-border hover:bg-background transition-all duration-200 shadow-lg">
+                    <Heart className={`h-5 w-5 transition-colors ${isFavorite ? 'text-red-500 fill-red-500' : 'text-muted-foreground hover:text-red-500'}`} />
+                  </button>}
               </div>
             </div>
             
