@@ -114,9 +114,7 @@ export const AreasGrid = ({
           <p className="text-lg text-muted-foreground mb-2">
             Acervo da Biblioteca Universitária
           </p>
-          <p className="text-muted-foreground mb-6">
-            organizada por áreas de especialização
-          </p>
+          
         </div>
 
         {/* Recent Books Carousel */}
